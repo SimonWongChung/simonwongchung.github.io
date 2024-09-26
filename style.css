@@ -138,4 +138,18 @@ padding-right: 80px;
 
 .section.work > .content {
     padding: 50vh 0 20px 0;
+    display: grid;
+    grid-template-columns: var(--grid--app-columns);
+    gap: var(--grid--app-gutter);
+}
+
+.section.work .project1 {
+    padding-bottom: 80px;
+    /* grid-column: 2 / -1;
+    column-span: 2; */
+    grid-column: 5 / span 5;
+}
+
+.section.work .project2 {
+    grid-column: 5 / span 5;
 }

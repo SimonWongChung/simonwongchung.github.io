@@ -4,6 +4,11 @@
     --grid--app-gutter: 20px;
     --grid--app-columns: var(--grid--app-columns-12);
     --grid--app-columns-12: repeat(12, [col-start] 1fr);
+    --grid--app-columns-6: repeat(6, [col-start] 1fr);
+    --grid--app-columns-4: repeat(4, [col-start] 1fr);
+    --grid--app-columns-3: repeat(3, [col-start] 1fr);
+    --grid--app-columns-2: repeat(2, [col-start] 1fr);
+    --grid--app-columns-1: repeat(1, [col-start] 1fr);
 }
 
 :root {

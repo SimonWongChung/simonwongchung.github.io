@@ -3,9 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>seemawn</title>
+
+    <link href="style.css" rel="stylesheet">
+    <link href="grids.css" rel="stylesheet">
+    <link href="variables.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <h1>Simon Wong Chung</h1>
+    <header>
+        <h1>seemawn</h1>
+    </header>
+
+    <nav>
+        <div class="nav-grid content">
+            <a class="item is--active" href="#">Intro</a>
+            <a class="item" href="#">Work</a>
+            <a class="item" href="#">Education</a>
+            <a class="item" href="#">Skills</a>
+            <a class="item" href="#">Contact</a>
+        </div>
+    </nav>
+
+    <main>
+        <section class="section intro">
+
+            <div class="content">
+
+                <div class="options">
+                    <div class="option about is--active">About</div>
+                    <div class="option occupation">Occupation</div>
+                    <div class="option interest">Interest</div>
+                </div>
+
+                <div class="texts">
+                    <h2 class="text about is--visible">Hello there, I'm Simon, a User Experience Designer who cares about making immersive experiences that help people.</h2>
+                    <h2 class="text occupation">Currently a third-year student at Simon Fraser University, I am pursuing a B.Sc in Interactive Arts & Technology and a Certificate in Innovation and Entrepreneurship.</h2>
+                    <h2 class="text interest">Beyond design, I am a health enthusiast who enjoys analyzing everyday products.</h2>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section work">
+            <div class="content">
+
+            </div>
+        </section>
+    </main>
+
+    <script src="main.js"></script>
 </body>
 </html>

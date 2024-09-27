@@ -74,5 +74,4 @@ function createShapes() {
   }
 }
 
-// Call the function to generate shapes
 createShapes();

@@ -339,3 +339,7 @@ padding-right: 80px;
 svg{
     margin-top: -5rem;
 }
+
+.section.visualization .art {
+    padding: 80px 0 var(--grid--app-margin) 0;
+}

@@ -41,7 +41,7 @@
                 <br>
                 <p>SVG Chart: Amount of Time Listened to Music in the Past Week</p>
                 <div class="chart">
-                    <svg width="740" height="580" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="svgChart" width="740" height="580" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg">
                         <!-- X and Y axis lines -->
                         <line x1="63" y1="324.5" x2="604" y2="324.5" stroke="#F1F1F1"/>
                         <line x1="70.5" y1="107" x2="70.5" y2="334" stroke="#F1F1F1"/>
@@ -91,36 +91,16 @@
 
                     <div class="art">
                         <p>SVG Art</p>
+                        <svg class="art" id="svgCanvas"></svg>
                     </div>
 
                 </div>
 
             </div>
         </section>
-
-        <section class="section work">
-            <div class="content">
-                <div class="project1">
-                    <p>UX Design + Research</p>
-                    <h3>Recover Together</h3>
-                    <p>2024</p>
-                    <p>Mobile interface design project that facilitates post-wildfire recovery, leveraging insights from primary and secondary research.</p>
-                    <img src="img/project1.png" alt="Recover Together" width="397" height="219">
-                </div>
-
-                <div class="project2">
-                    <p>UX Design</p>
-                    <h3>Cheeky's Cannabis</h3>
-                    <p>2023</p>
-                    <p>Offering new cannabis consumers a digital shopping experience that mirrors the in-store journey.</p>
-                    <img src="img/project2.png" alt="Recover Together" width="397" height="219">
-                </div>
-            </div>
-        </section>
-
-
     </main>
 
     <script src="main.js"></script>
+    <script src="vis.js"></script>
 </body>
 </html>

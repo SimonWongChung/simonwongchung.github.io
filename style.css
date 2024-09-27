@@ -336,10 +336,17 @@ padding-right: 80px;
     color: rgb(255, 255, 255, 0.9);
 }
 
-svg{
+.svgChart{
     margin-top: -5rem;
 }
 
 .section.visualization .art {
     padding: 80px 0 var(--grid--app-margin) 0;
+}
+
+svg.art{
+    border: 1px solid #333;
+    width: 600px;
+    height: 600px;
+    background-color: #fff;
 }

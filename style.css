@@ -333,3 +333,13 @@ svg.art{
 .spacing2{
     margin-bottom: 1rem;
 }
+
+.visualization h4{
+    margin-left: var(--font--margin-left);
+    font-size: 2rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+    margin-top: 4rem;
+    margin-bottom: 0;
+}

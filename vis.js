@@ -75,3 +75,92 @@ function createShapes() {
 }
 
 createShapes();
+
+
+
+/* A3 Vega-Lite Visualizations
+----------------------------------------------------------------------------- */
+
+// Create and render the bar chart
+async function render() {
+  // Load data
+  const data = await d3.csv("./dataset/videogames_wide.csv");
+
+  // Visualization 1
+  // Global Sales by Platform (Bar Chart)
+  const vlSpec1 = vl
+    .markBar()
+    .data(data)
+    .encode(
+      vl.x().fieldN('Platform').title('Platform'),  // x-axis for platforms
+      vl.y().sum('Global_Sales').title('Total Global Sales (in millions)'),  // y-axis for total global sales
+      vl.tooltip([vl.fieldN('Platform'), vl.sum('Global_Sales')])  // Add tooltips for sales data
+    )
+    .width("container")
+    .height(400)
+    .toSpec();
+
+  vegaEmbed("#view1", vlSpec1).then((result) => {
+    const view = result.view;
+    view.run();
+  });
+
+// Global Sales by Genre (Bar Chart)
+  const vlSpec2 = vl
+    .markBar()
+    .data(data)
+    .encode(
+      vl.x().fieldN('Genre').title('Genre'),  // x-axis for genres
+      vl.y().sum('Global_Sales').title('Total Global Sales (in millions)'),  // y-axis for total global sales
+      vl.tooltip([vl.fieldN('Genre'), vl.sum('Global_Sales')])  // Add tooltips for sales data
+    )
+    .width("container")
+    .height(400)
+    .toSpec();
+
+  vegaEmbed("#view2", vlSpec2).then((result) => {
+    const view = result.view;  
+    view.run();
+  });
+
+
+  // Visualization 2
+  const vlSpec3 = vl
+  .markLine()
+  .data(data)
+  .encode(
+    vl.x().fieldT('Year').title('Year'),  // x-axis: Year (temporal)
+    vl.y().sum('Global_Sales').title('Global Sales (in millions)'),  // y-axis: Sum of Global Sales
+    vl.color().fieldN('Platform').title('Platform'),  // Color by platform
+    vl.tooltip([vl.fieldN('Platform'), vl.sum('Global_Sales')])  
+  )
+  .width("container")
+  .height(600)
+  .toSpec();
+
+  vegaEmbed("#view3", vlSpec3).then((result) => {
+    const view = result.view;  
+    view.run();
+  });
+
+
+  const vlSpec4 = vl
+  .markLine()
+  .data(data)
+  .encode(
+    vl.x().fieldT('Year').title('Year'),  // x-axis: Year (temporal)
+    vl.y().sum('Global_Sales').title('Global Sales (in millions)'),  // y-axis: Sum of Global Sales
+    vl.color().fieldN('Genre').title('Genre'),  // Color by genre
+    vl.tooltip([vl.fieldN('Genre'), vl.sum('Global_Sales')])  
+  )
+  .width("container")
+  .height(600)
+  .toSpec();
+
+  vegaEmbed("#view4", vlSpec4).then((result) => {
+    const view = result.view;  
+    view.run();
+  });
+}
+
+render();

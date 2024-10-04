@@ -14,6 +14,36 @@
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite-api@5.6.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-tooltip"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+    <script>
+
+        const options = {
+            config: {
+                // Vega-Lite default configuration
+            },
+            init: (view) => {
+                // initialize tooltip handler
+                view.tooltip(new vegaTooltip.Handler().call);
+            },
+            view: {
+                // view constructor options
+                // remove the loader if you don't want to default to vega-datasets!
+                loader: vega.loader({
+                    baseURL: "https://cdn.jsdelivr.net/npm/vega-datasets@2/",
+                }),
+                renderer: "canvas",
+            },
+        };
+
+        // register vega and vega-lite with the API
+        vl.register(vega, vegaLite, options);
+    </script>
 </head>
 <body>
     <header>
@@ -100,7 +130,20 @@
 
                     <h4>IAT 355 Assignment 3: Introduction to Data Visualization with Vega-Lite</h4>
 
-                    <p>Visualization 1: Global Sales by Genre and Platform</p>
+                    <p class="visTitle">Visualization 1: Global Sales by Genre and Platform</p>
+                    
+                    <p class="chartH">Global Sales by Platform</p>
+                    <div id="view1"></div>
+
+                    <p class="chartH">Global Sales by Genre</p>
+                    <div id="view2"></div>
+
+                    <p class="visTitle">Visualization 2: Sales Over Time by Platform and Genre</p>
+                    <p class="chartH">Sales Over Time by Platform</p>
+                    <div id="view3"></div>
+
+                    <p class="chartH">Sales Over Time by Genre</p>
+                    <div id="view4"></div>
 
                 
 
@@ -112,5 +155,7 @@
 
     <script src="main.js"></script>
     <script src="vis.js"></script>
+    <script type="module" src="vis.js"></script>
+    
 </body>
 </html>

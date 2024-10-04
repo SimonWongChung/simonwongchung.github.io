@@ -343,3 +343,22 @@ svg.art{
     margin-top: 4rem;
     margin-bottom: 0;
 }
+
+
+
+/* A3 Vega-Lite Visualization
+----------------------------------------------------------------------------- */
+#view1, #view2, #view3, #view4 {
+    width: 100%;
+    height: 100%;
+    max-width: 800px;
+}
+
+.chartH{
+    margin-top: 3rem;
+}
+
+.visTitle{
+    margin-top: 4rem;
+    font-size: 1.5rem;
+}

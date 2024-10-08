@@ -85,6 +85,7 @@ createShapes();
 async function render() {
   // Load data
   const data = await d3.csv("./dataset/videogames_wide.csv");
+  const data2 = await d3.csv("./dataset/videogames_long.csv");
 
   // Visualization 1
   // Global Sales by Platform (Bar Chart)
@@ -161,6 +162,47 @@ async function render() {
     const view = result.view;  
     view.run();
   });
+
+
+  // Visualization 3
+  const vlSpec5 = vl
+  .markBar()
+  .data(data2)
+  .encode(
+    vl.y().fieldQ('sales_amount').title("Units Sold in Millions").aggregate('sum'),
+    vl.x().fieldN('platform').title("Video Game Platform").sort('-y'),
+    vl.color().fieldN('platform'),
+    vl.tooltip(['platform']),
+    vl.facet().fieldN("sales_region").columns(1).title("Sales of Video Game Platforms by Region")
+  )
+  .width("container")
+  .height(400)
+  .toSpec();
+  
+  vegaEmbed("#view5", vlSpec5).then((result) => {
+  view = result.v3;
+  view.run();
+  });
+
+  const vlSpec6 = vl
+  .markBar()
+  .data(data2)
+  .encode(
+    vl.x().fieldN('genre').title("Video Game Genre").sort('-y'),
+    vl.y().fieldQ('global_sales').title("Total Sales in Millions").aggregate('sum'), // Sum of sales
+    vl.color().fieldN('genre'),  // Color by genre for differentiation
+    vl.facet().fieldN("sales_region").columns(1).title("Sales of Video Game Platforms by Region"), // Facet by region
+    vl.tooltip([vl.fieldN('genre'), vl.sum('global_sales')]) // Sales Data per genre
+  )
+  .width("container")
+  .height(400)
+  .toSpec();
+  
+  vegaEmbed("#view6", vlSpec6).then((result) => {
+  view = result.v3;
+  view.run();
+  });
+
 }
 
 render();

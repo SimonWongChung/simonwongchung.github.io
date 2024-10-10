@@ -94,6 +94,7 @@ async function render() {
     .data(data)
     .encode(
       vl.x().fieldN('Platform').title('Platform'),  // x-axis for platforms
+      vl.color().fieldN('Platform'),
       vl.y().sum('Global_Sales').title('Total Global Sales (in millions)'),  // y-axis for total global sales
       vl.tooltip([vl.fieldN('Platform'), vl.sum('Global_Sales')])  // Add tooltips for sales data
     )
@@ -106,13 +107,14 @@ async function render() {
     view.run();
   });
 
-// Global Sales by Genre (Bar Chart)
+  // Global Sales by Genre (Bar Chart)
   const vlSpec2 = vl
     .markBar()
     .data(data)
     .encode(
       vl.x().fieldN('Genre').title('Genre'),  // x-axis for genres
       vl.y().sum('Global_Sales').title('Total Global Sales (in millions)'),  // y-axis for total global sales
+      vl.color().fieldN('Genre'),
       vl.tooltip([vl.fieldN('Genre'), vl.sum('Global_Sales')])  // Add tooltips for sales data
     )
     .width("container")
@@ -120,88 +122,92 @@ async function render() {
     .toSpec();
 
   vegaEmbed("#view2", vlSpec2).then((result) => {
-    const view = result.view;  
+    const view = result.view;
     view.run();
   });
 
 
   // Visualization 2
+  // Visualization 2.1
   const vlSpec3 = vl
-  .markLine()
-  .data(data)
-  .encode(
-    vl.x().fieldT('Year').title('Year'),  // x-axis: Year (temporal)
-    vl.y().sum('Global_Sales').title('Global Sales (in millions)'),  // y-axis: Sum of Global Sales
-    vl.color().fieldN('Platform').title('Platform'),  // Color by platform
-    vl.tooltip([vl.fieldN('Platform'), vl.sum('Global_Sales')])  
-  )
-  .width("container")
-  .height(600)
-  .toSpec();
+    .markCircle()
+    .data(data)
+    .encode(
+      vl.y().fieldN("Platform").title('Video Game Platform'),
+      vl.x().fieldO("Year").title('Release Year'),
+      vl.size().fieldQ("Global_Sales").aggregate("mean"),
+      vl.tooltip([vl.fieldN("Platform"), vl.fieldO("Year")])
+    )
+    .width("container")
+    .height(700)
+    .toSpec();
 
   vegaEmbed("#view3", vlSpec3).then((result) => {
-    const view = result.view;  
+    const view = result.view;
     view.run();
   });
 
-
+  // Visualization 2.2
   const vlSpec4 = vl
-  .markLine()
-  .data(data)
-  .encode(
-    vl.x().fieldT('Year').title('Year'),  // x-axis: Year (temporal)
-    vl.y().sum('Global_Sales').title('Global Sales (in millions)'),  // y-axis: Sum of Global Sales
-    vl.color().fieldN('Genre').title('Genre'),  // Color by genre
-    vl.tooltip([vl.fieldN('Genre'), vl.sum('Global_Sales')])  
-  )
-  .width("container")
-  .height(600)
-  .toSpec();
+    .markCircle()
+    .data(data)
+    .encode(
+      vl.y().fieldN("Genre").title('Video Game Genre'),
+      vl.x().fieldO("Year").title('Release Year'),
+      vl.size().fieldQ("Global_Sales").aggregate("mean"),
+      vl.tooltip([vl.fieldN("Genre"), vl.fieldO("Year")])
+    )
+    .width("container")
+    .height(600)
+    .toSpec();
 
   vegaEmbed("#view4", vlSpec4).then((result) => {
-    const view = result.view;  
+    const view = result.view;
     view.run();
   });
 
 
   // Visualization 3
   const vlSpec5 = vl
-  .markBar()
-  .data(data2)
-  .encode(
-    vl.y().fieldQ('sales_amount').title("Units Sold in Millions").aggregate('sum'),
-    vl.x().fieldN('platform').title("Video Game Platform").sort('-y'),
-    vl.color().fieldN('platform'),
-    vl.tooltip(['platform']),
-    vl.facet().fieldN("sales_region").columns(1).title("Sales of Video Game Platforms by Region")
-  )
-  .width("container")
-  .height(400)
-  .toSpec();
-  
+    .markBar()
+    .data(data2)
+    .encode(
+      vl.y().fieldQ('sales_amount').title("Units Sold in Millions").aggregate('sum'),
+      vl.x().fieldN('platform').title("Video Game Platform").sort('-y'),
+      vl.color().fieldN('platform'),
+      vl.tooltip([vl.fieldN('platform'), vl.sum('sales_amount')]),
+      vl.facet().fieldN("sales_region").columns(1).title("Sales of Video Game Platforms by Region")
+    )
+    .width("container")
+    .height(300)
+    .resolve({ axis: { x: "independent" } })
+    .toSpec();
+
   vegaEmbed("#view5", vlSpec5).then((result) => {
-  view = result.v3;
-  view.run();
+    view = result.v3;
+    view.run();
   });
 
+  // Visualization 4
   const vlSpec6 = vl
   .markBar()
   .data(data2)
   .encode(
     vl.x().fieldN('genre').title("Video Game Genre").sort('-y'),
-    vl.y().fieldQ('global_sales').title("Total Sales in Millions").aggregate('sum'), // Sum of sales
-    vl.color().fieldN('genre'),  // Color by genre for differentiation
-    vl.facet().fieldN("sales_region").columns(1).title("Sales of Video Game Platforms by Region"), // Facet by region
-    vl.tooltip([vl.fieldN('genre'), vl.sum('global_sales')]) // Sales Data per genre
+    vl.y().fieldQ('sales_amount').title("Total Sales in Millions").aggregate('sum'), // Sum of regional sales
+    vl.color().fieldN('genre'),  // Color by region for differentiation
+    vl.facet().fieldN("sales_region").columns(1).title("Sales of Video Game Genres by Region"), // Facet by region
+    vl.tooltip([vl.fieldN('genre'), vl.sum('sales_amount')]) // Sales Data per genre
   )
   .width("container")
-  .height(400)
+  .height(300)
+  .resolve({ axis: { x: "independent" } })
   .toSpec();
-  
-  vegaEmbed("#view6", vlSpec6).then((result) => {
+
+vegaEmbed("#view6", vlSpec6).then((result) => {
   view = result.v3;
   view.run();
-  });
+});
 
 }
 

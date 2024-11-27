@@ -361,3 +361,54 @@ svg.art{
     margin-top: 5rem;
     font-size: 1.5rem;
 }
+
+/* FINAL PROJECT
+----------------------------------------------------------------------------- */
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+.head{
+    font-size: 1.6rem;
+    color: rgb(255, 255, 255, 0.99);
+    margin-bottom: 1rem;
+}
+
+.finalproject li{
+    margin: 1rem;
+}
+
+/* Vis 1
+----------------------------------------------------------------------------- */
+
+.bar {
+    fill: steelblue;
+  }
+  
+  .bar:hover {
+    fill: orange;
+  }
+  
+  .axis text {
+    font-size: 12px;
+  }
+  
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+  }
+
+  /* Style for the chart container */
+.vis1 {
+    display: block; /* Or inline-block depending on your layout */
+    width: 100%; /* Adjust width as needed */
+    text-align: center; /* Center align the chart horizontally */
+    position: relative; /* Enable custom positioning */
+    margin: 50px auto; /* Center the chart vertically with margin */
+    top: 0; /* Adjust top position */
+    left: 0; /* Adjust left position */
+  }

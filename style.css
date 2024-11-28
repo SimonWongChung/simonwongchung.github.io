@@ -411,4 +411,29 @@ img{
     margin: 50px auto; /* Center the chart vertically with margin */
     top: 0; /* Adjust top position */
     left: 0; /* Adjust left position */
+}
+
+.caption{
+    font-style: italic;
+    margin-top: -1.5rem;
+}
+
+/* Vis 2
+----------------------------------------------------------------------------- */
+.line {
+    fill: none;
+    stroke-width: 2;
+  }
+  .line.scored {
+    stroke: steelblue;
+  }
+  .line.conceded {
+    stroke: crimson;
+  }
+  .axis-label {
+    font-size: 12px;
+  }
+  #vis-container {
+    text-align: center;
+    margin-top: 20px;
   }

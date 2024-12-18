@@ -1,0 +1,15 @@
+.column-2-grid{
+    display: grid;
+    grid-column-gap: 2.5rem;
+    grid-row-gap: 1rem;
+}
+
+@media(min-width: 90rem){
+
+    .column-2-grid{
+        grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: auto;
+		grid-auto-flow: row;
+    }
+
+}
